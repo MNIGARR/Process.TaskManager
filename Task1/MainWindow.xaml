@@ -1,0 +1,39 @@
+﻿<Window x:Class="Task1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task1"
+        mc:Ignorable="d"
+        Title="Task Manager" Height="450" Width="800">
+    <Grid Background="Bisque">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ListView x:Name="ListView"  ItemsSource="{Binding Processes }" SelectedItem="{Binding SelectProcess}" >
+                <ListView.View>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn Width="200" Header="Name"  DisplayMemberBinding="{Binding ProcessName}"/>
+                            <GridViewColumn Width="200" Header="Id" DisplayMemberBinding="{Binding Id}"/>
+                            <GridViewColumn Width="200" Header="Machine name" DisplayMemberBinding="{Binding MachineName}"/>
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <TextBlock Text="Process Name" FontWeight="ExtraLight" FontSize="16" FontFamily="Forte" VerticalAlignment="Center" Margin="30, 10, 40, 10"></TextBlock>
+            <TextBox x:Name="Textbox" Width="300" Text="{Binding ProccesName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Margin="50,5"></TextBox>
+            <Button x:Name="Create_button" Width="110" Margin="10" FontSize="15" FontFamily="Forte" Click="Create_Button_Click">Create Process</Button>
+            <Button x:Name="End_button"  Width="100" Margin="10" FontSize ="15"  FontFamily="Forte" Click="End_Button_Click">End Process</Button>
+        </StackPanel>
+
+    </Grid>
+</Window>
